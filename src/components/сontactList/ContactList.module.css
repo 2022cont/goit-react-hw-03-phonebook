@@ -1,0 +1,21 @@
+li {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.textNumber {
+    margin-left: 20px;
+}
+
+.btnDel {
+    margin-left: 20px;
+    height: 25px;
+    width: 100px;
+
+    border-style: none;
+    font-size: medium;
+
+
+    border: 1px solid rgb(150, 141, 141);
+    border-radius: 5px;
+}
