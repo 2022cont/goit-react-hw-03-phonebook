@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Form from './form/Form';
 import { ContactList } from './сontactList/ContactList';
 
+const STOREG_KEY = "feedback-form-state";
+
 class App extends Component {
   state = {
     contacts: [{ id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -11,6 +13,8 @@ class App extends Component {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },],
     filter: '',
   };
+
+
 
   formHandelSubmit = data => {
     const { contacts } = this.state;
@@ -32,6 +36,21 @@ class App extends Component {
   findContact = () => {
     return this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter))
   };
+
+  componentDidMount() {
+    const contact = localStorage.getItem(STOREG_KEY)
+    const parseContact = JSON.parse(contact)
+    if (parseContact) {
+      this.setState({contacts: parseContact})
+    }
+
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem(STOREG_KEY, JSON.stringify(this.state.contacts));
+    }
+  }
 
   render() {
     let findArray = this.findContact();

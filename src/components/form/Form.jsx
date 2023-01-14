@@ -22,6 +22,7 @@ class Form extends Component {
 
     handleAddSubmit = event => {
         event.preventDefault();
+
         if (this.props.contacts.find(element => element.name === this.state.name)) {
             this.reset();
             return alert(this.state.name + " is already in contacts")
@@ -46,7 +47,7 @@ class Form extends Component {
                         name="name"
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                        // className={css.inputForm}
+                        className={css.inputForm}
                         required
 
                         onChange={this.handleInput}
